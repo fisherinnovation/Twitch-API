@@ -1,46 +1,6 @@
 ## Twitch Player API
 
-We expose a JavaScript API for our Flash Twitch player that gives flexibility and functionality to embedding. The IFrame embed does not yet have an external interface.
-
-### Example code
-
-```html
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-  <head>
-    <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-      $(function () {
-        window.onPlayerEvent = function (data) {
-          data.forEach(function(event) {
-            if (event.event == "playerInit") {
-              var player = $("#twitch_embed_player")[0];
-              player.playVideo();
-              player.mute();
-            }
-          });
-        }
-        
-        swfobject.embedSWF("//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf", "twitch_embed_player", "640", "400", "11", null,
-          { "eventsCallback":"onPlayerEvent",
-            "embed":1,
-            "channel":"day9tv",
-            "auto_play":"true"},
-          { "allowScriptAccess":"always",
-            "allowFullScreen":"true"});
-      });
-    </script>
-  </head>
-  <body>
-    <div id="twitch_embed_player">
-    </div>
-  </body>
-</html>
-```
-
 ### Functions
-
 <table>
     <thead>
         <tr>
@@ -171,15 +131,6 @@ Events are emitted through the eventsCallback Flash player parameter in the foll
             <td><code>videoPlaying</code></td>
             <td>Emitted when a stream or video starts playing</td>
             <td><pre>{}</pre></td>
-        </tr>
-        <tr>
-            <td><code>mouseScroll</code></td>
-            <td>Emitted when the user scrolls over the video</td>
-            <td>
-<pre>{
-  delta: 1
-}</pre>
-            </td>
         </tr>
     </tbody>
 </table>
